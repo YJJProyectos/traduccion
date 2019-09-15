@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+#contenedor-principal {
+    margin: 30px 30px 50px 30px;
+}
+#contenedor {
+    display: flex;
+  
+    flex-wrap: wrap;
+    align-content: flex-end;
+}
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    margin-right: 30px;
+}
+
+.columna {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: 2px;
+}
+
+.filas {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.texto {
+    align-self: center;
+}
+
+.boton {
+    /*align-self: center;
+    margin-right: 50px;*/
+    background: no-repeat;
+}
+
+.item {
+    align-self: center;
+    margin-right: 50px;
+}

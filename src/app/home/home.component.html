@@ -1,0 +1,63 @@
+<div id="contenedor-principal">
+    <div id=contenedor>
+        <div class="contenedor">
+            <!-- <h1 class="texto" > {{ textoGrabado | pinyin }} </h1> 
+            <h1 class="texto" id="texto">{{ textoGrabado }}</h1> -->
+
+            <h1 class="item texto">Pronunciar</h1> 
+
+            <div class="filas">
+                <div class="columna" #texto *ngFor="let item of arrayTextoGrabado">
+                    <h3 class="texto" > {{ item | pinyin }} </h3> 
+                    <h3 class="texto" >{{ item }}</h3>
+                </div>      
+            </div>              
+        </div>
+        <div class="item">
+            <h4>
+                A pronunciar
+            </h4>
+            <h6>
+                {{ aPronunciar | pinyin }}
+            </h6>
+            <p id="texto-pronunciar">{{ aPronunciar }} </p>
+        </div>
+        <div class="item">
+            <button class="boton" id="start_button" (click)="startButton($event)" style="display: inline-block;"><img alt="Start" id="start_img" [src]="rutaMic"></button>
+        </div>
+        <button class="item boton" (click)="escuchar()">Escuchar Lo ingresado</button>
+        <button class="item boton" (click)="escucharTexto()">Escuchar el texto a pronunciar</button>
+        <div class="item">
+            <h4>
+                Resultado
+            </h4>
+            <p id="resultado">
+                NO OK
+            </p>
+        </div>
+    </div>
+
+
+    <mat-progress-spinner *ngIf="buscando"
+    [mode]="'indeterminate'">
+
+    </mat-progress-spinner>
+    <div id=contenedor>
+
+        <input id="texto-busqueda" class="item" type="search" #textoBusqueda>
+        <button class="item boton" (click)="buscar()">Buscar</button>
+
+        <div class="item">
+            <h4>
+                Resultado
+            </h4>
+            <h6>
+                {{ resultadoBusqueda | pinyin }}
+            </h6>
+            <p id="resultado-busqueda">{{ resultadoBusqueda }}</p>
+        </div>
+        <button class="item boton" (click)="escucharResultado()">Escuchar resultado</button>
+    </div>	
+
+</div>
+
