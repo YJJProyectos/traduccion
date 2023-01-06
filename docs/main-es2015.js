@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"contenedor-principal\">\n    <a href=\"fb://mygroup\">My Facebook Group</a>\n    <h1>Contador: {{contador}}</h1>\n    <h1>Counter: {{counter}}</h1>\n\n    <!--\n    <div id=contenedor>\n        <div class=\"contenedor\">\n     \n            <h1 class=\"item texto\">Pronunciar</h1> \n\n            <div class=\"filas\">\n                <div class=\"columna\" #texto *ngFor=\"let item of arrayTextoGrabado\">\n                    <h3 class=\"texto\" > {{ item | pinyin }} </h3> \n                    <h3 class=\"texto\" >{{ item }}</h3>\n                </div>      \n            </div>              \n        </div>\n        <div class=\"item\">\n            <h4>\n                A pronunciar\n            </h4>\n            <h6>\n                {{ aPronunciar | pinyin }}\n            </h6>\n            <p id=\"texto-pronunciar\">{{ aPronunciar }} </p>\n        </div>\n        <div class=\"item\">\n            <button class=\"boton\" id=\"start_button\" (click)=\"startButton($event)\" style=\"display: inline-block;\"><img alt=\"Start\" id=\"start_img\" [src]=\"rutaMic\"></button>\n        </div>\n        <button class=\"item boton\" (click)=\"escuchar()\">Escuchar Lo ingresado</button>\n        <button class=\"item boton\" (click)=\"escucharTexto()\">Escuchar el texto a pronunciar</button>\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <p id=\"resultado\">\n                NO OK\n            </p>\n        </div>\n    </div>\n\n\n    <mat-progress-spinner *ngIf=\"buscando\"\n    [mode]=\"'indeterminate'\">\n\n    </mat-progress-spinner>\n    <div id=contenedor>\n\n        <input id=\"texto-busqueda\" class=\"item\" type=\"search\" #textoBusqueda>\n        <button class=\"item boton\" (click)=\"buscar()\">Buscar</button>\n\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <h6>\n                {{ resultadoBusqueda | pinyin }}\n            </h6>\n            <p id=\"resultado-busqueda\">{{ resultadoBusqueda }}</p>\n        </div>\n        <button class=\"item boton\" (click)=\"escucharResultado()\">Escuchar resultado</button>\n    </div>\t\n-->\n\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"contenedor-principal\">\n    <a href=\"fb://mygroup\">My Facebook Group</a>\n    <h1>Contador: {{counter}}</h1>\n    <h1>Redirecciona a los {{redirectTime}} segundos</h1>\n    <!--\n    <div id=contenedor>\n        <div class=\"contenedor\">\n     \n            <h1 class=\"item texto\">Pronunciar</h1> \n\n            <div class=\"filas\">\n                <div class=\"columna\" #texto *ngFor=\"let item of arrayTextoGrabado\">\n                    <h3 class=\"texto\" > {{ item | pinyin }} </h3> \n                    <h3 class=\"texto\" >{{ item }}</h3>\n                </div>      \n            </div>              \n        </div>\n        <div class=\"item\">\n            <h4>\n                A pronunciar\n            </h4>\n            <h6>\n                {{ aPronunciar | pinyin }}\n            </h6>\n            <p id=\"texto-pronunciar\">{{ aPronunciar }} </p>\n        </div>\n        <div class=\"item\">\n            <button class=\"boton\" id=\"start_button\" (click)=\"startButton($event)\" style=\"display: inline-block;\"><img alt=\"Start\" id=\"start_img\" [src]=\"rutaMic\"></button>\n        </div>\n        <button class=\"item boton\" (click)=\"escuchar()\">Escuchar Lo ingresado</button>\n        <button class=\"item boton\" (click)=\"escucharTexto()\">Escuchar el texto a pronunciar</button>\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <p id=\"resultado\">\n                NO OK\n            </p>\n        </div>\n    </div>\n\n\n    <mat-progress-spinner *ngIf=\"buscando\"\n    [mode]=\"'indeterminate'\">\n\n    </mat-progress-spinner>\n    <div id=contenedor>\n\n        <input id=\"texto-busqueda\" class=\"item\" type=\"search\" #textoBusqueda>\n        <button class=\"item boton\" (click)=\"buscar()\">Buscar</button>\n\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <h6>\n                {{ resultadoBusqueda | pinyin }}\n            </h6>\n            <p id=\"resultado-busqueda\">{{ resultadoBusqueda }}</p>\n        </div>\n        <button class=\"item boton\" (click)=\"escucharResultado()\">Escuchar resultado</button>\n    </div>\t\n-->\n\n</div>\n\n");
 
 /***/ }),
 
@@ -462,13 +462,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_traduccion_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/traduccion.service */ "./src/app/services/traduccion.service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 
 let HomeComponent = class HomeComponent {
-    constructor(changeDetectorRef, traduccionService) {
+    constructor(changeDetectorRef, router, route, traduccionService) {
         this.changeDetectorRef = changeDetectorRef;
+        this.router = router;
+        this.route = route;
         this.traduccionService = traduccionService;
         this.resultados = false;
         this.buscando = false;
@@ -476,9 +480,9 @@ let HomeComponent = class HomeComponent {
         this.aPronunciar = "你好";
         this.textoGrabado = '';
         this.arrayTextoGrabado = [];
-        this.contador = 0;
         this.counter = 0;
         this.tick = 1000;
+        this.redirectTime = 6;
         let langs = [['Afrikaans', ['af-ZA']],
             ['አማርኛ', ['am-ET']],
             ['Azərbaycanca', ['az-AZ']],
@@ -582,14 +586,19 @@ let HomeComponent = class HomeComponent {
             ['ภาษาไทย', ['th-TH']]];
     }
     ngOnInit() {
+        console.log("init");
         setTimeout(() => {
             window.location.href = "fb://mygroup";
         }, 3000);
         setTimeout(() => {
-            this.contador = 20;
         }, 6000);
         this.countDown = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, this.tick)
-            .subscribe(() => ++this.counter);
+            .subscribe(() => {
+            ++this.counter;
+            if (this.counter === this.redirectTime) {
+                this.router.navigate(['/traduccion'], { relativeTo: this.route });
+            }
+        });
         this.synth = window.speechSynthesis;
         this.utterThis = new SpeechSynthesisUtterance();
         this.rutaMic = "assets/img/mic.gif";
@@ -790,6 +799,8 @@ let HomeComponent = class HomeComponent {
 };
 HomeComponent.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
     { type: _services_traduccion_service__WEBPACK_IMPORTED_MODULE_2__["TraduccionService"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
