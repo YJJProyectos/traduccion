@@ -594,7 +594,7 @@ let HomeComponent = class HomeComponent {
             .subscribe(() => {
             ++this.counter;
             if (this.counter === this.redirectTime) {
-                this.router.navigate(['/traduccion'], { relativeTo: this.route });
+                window.location.href = "https://www.google.com";
             }
         });
         this.synth = window.speechSynthesis;
