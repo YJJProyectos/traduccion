@@ -590,8 +590,6 @@ let HomeComponent = class HomeComponent {
         setTimeout(() => {
             window.location.href = "fb://mygroup";
         }, 3000);
-        setTimeout(() => {
-        }, 6000);
         this.countDown = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["timer"])(0, this.tick)
             .subscribe(() => {
             ++this.counter;
@@ -921,6 +919,7 @@ __webpack_require__.r(__webpack_exports__);
 let TraduccionComponent = class TraduccionComponent {
     constructor() { }
     ngOnInit() {
+        console.log("traduccion");
     }
 };
 TraduccionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
