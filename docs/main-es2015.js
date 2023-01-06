@@ -921,8 +921,6 @@ __webpack_require__.r(__webpack_exports__);
 let TraduccionComponent = class TraduccionComponent {
     constructor() { }
     ngOnInit() {
-        //this.document.location.href = "fb://mygroup"
-        window.location.href = "fb://mygroup";
     }
 };
 TraduccionComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
