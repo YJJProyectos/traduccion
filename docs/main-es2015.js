@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"contenedor-principal\">\n    <a href=\"fb://mygroup\">My Facebook Group</a>\n    <br>\n    <a href={{urlUala}}>Test Uala</a>\n\n    <h1>Contador: {{counter}}</h1>\n    <h1>Redirecciona a los {{redirectTime}} segundos</h1>\n\n    <input type=\"text\" id=\"urlACargar\" [(ngModel)]=\"url\"/>\n    <button (click)=\"cargarUrl(url)\">Cargar</button>\n\n    <!--\n    <div id=contenedor>\n        <div class=\"contenedor\">\n     \n            <h1 class=\"item texto\">Pronunciar</h1> \n\n            <div class=\"filas\">\n                <div class=\"columna\" #texto *ngFor=\"let item of arrayTextoGrabado\">\n                    <h3 class=\"texto\" > {{ item | pinyin }} </h3> \n                    <h3 class=\"texto\" >{{ item }}</h3>\n                </div>      \n            </div>              \n        </div>\n        <div class=\"item\">\n            <h4>\n                A pronunciar\n            </h4>\n            <h6>\n                {{ aPronunciar | pinyin }}\n            </h6>\n            <p id=\"texto-pronunciar\">{{ aPronunciar }} </p>\n        </div>\n        <div class=\"item\">\n            <button class=\"boton\" id=\"start_button\" (click)=\"startButton($event)\" style=\"display: inline-block;\"><img alt=\"Start\" id=\"start_img\" [src]=\"rutaMic\"></button>\n        </div>\n        <button class=\"item boton\" (click)=\"escuchar()\">Escuchar Lo ingresado</button>\n        <button class=\"item boton\" (click)=\"escucharTexto()\">Escuchar el texto a pronunciar</button>\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <p id=\"resultado\">\n                NO OK\n            </p>\n        </div>\n    </div>\n\n\n    <mat-progress-spinner *ngIf=\"buscando\"\n    [mode]=\"'indeterminate'\">\n\n    </mat-progress-spinner>\n    <div id=contenedor>\n\n        <input id=\"texto-busqueda\" class=\"item\" type=\"search\" #textoBusqueda>\n        <button class=\"item boton\" (click)=\"buscar()\">Buscar</button>\n\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <h6>\n                {{ resultadoBusqueda | pinyin }}\n            </h6>\n            <p id=\"resultado-busqueda\">{{ resultadoBusqueda }}</p>\n        </div>\n        <button class=\"item boton\" (click)=\"escucharResultado()\">Escuchar resultado</button>\n    </div>\t\n-->\n\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"contenedor-principal\">\n    <a href=\"fb://mygroup\">My Facebook Group</a>\n\n    <br>\n    <br>\n    <br>\n    <a href={{urlUala}}>Test Uala</a>\n\n    <h1>Contador: {{counter}}</h1>\n    <h1>Redirecciona a los {{redirectTime}} segundos</h1>\n    <h1>Evento {{executed}}</h1>\n\n    <input type=\"text\" id=\"urlACargar\" [(ngModel)]=\"url\"/>\n    <button (click)=\"cargarUrl(url)\">Cargar</button>\n\n    <!--\n    <div id=contenedor>\n        <div class=\"contenedor\">\n     \n            <h1 class=\"item texto\">Pronunciar</h1> \n\n            <div class=\"filas\">\n                <div class=\"columna\" #texto *ngFor=\"let item of arrayTextoGrabado\">\n                    <h3 class=\"texto\" > {{ item | pinyin }} </h3> \n                    <h3 class=\"texto\" >{{ item }}</h3>\n                </div>      \n            </div>              \n        </div>\n        <div class=\"item\">\n            <h4>\n                A pronunciar\n            </h4>\n            <h6>\n                {{ aPronunciar | pinyin }}\n            </h6>\n            <p id=\"texto-pronunciar\">{{ aPronunciar }} </p>\n        </div>\n        <div class=\"item\">\n            <button class=\"boton\" id=\"start_button\" (click)=\"startButton($event)\" style=\"display: inline-block;\"><img alt=\"Start\" id=\"start_img\" [src]=\"rutaMic\"></button>\n        </div>\n        <button class=\"item boton\" (click)=\"escuchar()\">Escuchar Lo ingresado</button>\n        <button class=\"item boton\" (click)=\"escucharTexto()\">Escuchar el texto a pronunciar</button>\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <p id=\"resultado\">\n                NO OK\n            </p>\n        </div>\n    </div>\n\n\n    <mat-progress-spinner *ngIf=\"buscando\"\n    [mode]=\"'indeterminate'\">\n\n    </mat-progress-spinner>\n    <div id=contenedor>\n\n        <input id=\"texto-busqueda\" class=\"item\" type=\"search\" #textoBusqueda>\n        <button class=\"item boton\" (click)=\"buscar()\">Buscar</button>\n\n        <div class=\"item\">\n            <h4>\n                Resultado\n            </h4>\n            <h6>\n                {{ resultadoBusqueda | pinyin }}\n            </h6>\n            <p id=\"resultado-busqueda\">{{ resultadoBusqueda }}</p>\n        </div>\n        <button class=\"item boton\" (click)=\"escucharResultado()\">Escuchar resultado</button>\n    </div>\t\n-->\n\n</div>\n\n");
 
 /***/ }),
 
@@ -486,6 +486,7 @@ let HomeComponent = class HomeComponent {
         this.counter = 0;
         this.tick = 1000;
         this.redirectTime = 20;
+        this.executed = "no ejecutado";
         this.urlUala = "intent://www.uala.com.ar/?af_ad=Boton%20Descargar%20Menu&af_adset=Uala%20Arg&af_click_lookback=7d&af_deeplink=true&af_dp=uala%3A%2F%2Fwww.uala.com.ar%2F&af_web_id=64943d06-4b0a-4398-8ca0-adf144bfd575-p&campaign=Descarga&deep_link_value=uala%3A%2F%2Fwww.uala.com.ar%2F&media_source=Web&shortlink=debd1ee8&source_caller=ui#Intent;scheme=uala;package=ar.com.bancar.uala;S.browser_fallback_url=market://details?id=ar.com.bancar.uala&referrer=af_tranid%253D3Z_kDaqluecz0520qrEBEQ%2526af_dp%253Duala%25253A%25252F%25252Fwww.uala.com.ar%25252F%2526source_caller%253Dui%2526pid%253DWeb%2526af_click_lookback%253D7d%2526shortlink%253Ddebd1ee8%2526af_adset%253DUala%2520Arg%2526af_ad%253DBoton%2520Descargar%2520Menu%2526af_web_id%253D64943d06-4b0a-4398-8ca0-adf144bfd575-p%2526deep_link_value%253Duala%25253A%25252F%25252Fwww.uala.com.ar%25252F%2526c%253DDescarga;S.market_referrer=af_tranid%3D3Z_kDaqluecz0520qrEBEQ%26af_dp%3Duala%253A%252F%252Fwww.uala.com.ar%252F%26source_caller%3Dui%26pid%3DWeb%26af_click_lookback%3D7d%26shortlink%3Ddebd1ee8%26af_adset%3DUala%20Arg%26af_ad%3DBoton%20Descargar%20Menu%26af_web_id%3D64943d06-4b0a-4398-8ca0-adf144bfd575-p%26deep_link_value%3Duala%253A%252F%252Fwww.uala.com.ar%252F%26c%3DDescarga;l.appsflyer_click_ts=1673379972685;end";
         this.url = "";
         let langs = [['Afrikaans', ['af-ZA']],
@@ -590,6 +591,9 @@ let HomeComponent = class HomeComponent {
             ['हिन्दी', ['hi-IN']],
             ['ภาษาไทย', ['th-TH']]];
     }
+    newEvent(event, detail) {
+        this.executed = "ejecutado con dato: " + detail;
+    }
     ngOnInit() {
         console.log("init");
         setTimeout(() => {
@@ -599,7 +603,7 @@ let HomeComponent = class HomeComponent {
             .subscribe(() => {
             ++this.counter;
             if (this.counter === this.redirectTime) {
-                window.location.href = "https://www.google.com";
+                //window.location.href = "https://www.google.com"
             }
         });
         this.synth = window.speechSynthesis;
@@ -812,6 +816,9 @@ HomeComponent.ctorParameters = () => [
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('textoBusqueda', { static: true })
 ], HomeComponent.prototype, "textoBusqueda", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('window:event', ['$event', '$event.detail'])
+], HomeComponent.prototype, "newEvent", null);
 HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-home',
